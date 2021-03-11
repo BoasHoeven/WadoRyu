@@ -2,7 +2,7 @@
 
 namespace WadoRyu.Models
 {
-	public class ApplicationUser : IdentityUser<int>
+	public class ApplicationUser : IdentityUser<string>
 	{
 		public string FirstName { get; set; }
 		public string LastName { get; set; }

@@ -46,3 +46,4 @@ namespace WadoRyu.Data
             await _context.SaveChangesAsync();
         }
     }
+ }
