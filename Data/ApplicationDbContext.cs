@@ -9,12 +9,5 @@ namespace WadoRyu.Data
 			: base(options)
 		{
 		}
-
-		protected override void OnModelCreating(ModelBuilder builder)
-		{
-			base.OnModelCreating(builder);
-			var userSeed = new UserSeed(this);
-			userSeed.SeedAdminUser();
-		}
 	}
 }
