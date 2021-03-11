@@ -1,6 +1,8 @@
-﻿namespace WadoRyu.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace WadoRyu.Models
 {
-	public class AppRole
+	public class AppRole : IdentityRole<int>
 	{
 	}
 }
