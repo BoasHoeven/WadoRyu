@@ -1,8 +1,8 @@
-﻿using Fluent.Infrastructure.FluentModel;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Linq;
+using WadoRyu.Models;
 
 namespace WadoRyu.Data
 {
