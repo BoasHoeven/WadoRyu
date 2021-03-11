@@ -2,7 +2,7 @@
 
 namespace WadoRyu.Models
 {
-	public class ApplicationRole : IdentityRole<int>
+	public class ApplicationRole : IdentityRole<string>
 	{
 	}
 }

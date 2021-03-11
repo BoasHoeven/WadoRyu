@@ -19,6 +19,7 @@ namespace WadoRyu.Data
         {
             var user = new ApplicationUser
             {
+                Id = Guid.NewGuid().ToString(),
                 UserName = "Email@email.com",
                 Email = "Email@email.com",
                 EmailConfirmed = true,
@@ -26,11 +27,11 @@ namespace WadoRyu.Data
                 SecurityStamp = Guid.NewGuid().ToString()
             };
 
-            var roleStore = new RoleStore<IdentityRole>(_context);
+            var roleStore = new RoleStore<ApplicationRole>(_context);
 
             if (!_context.Roles.Any(r => r.Name == "admin"))
             {
-                await roleStore.CreateAsync(new IdentityRole { Name = "admin", NormalizedName = "admin" });
+                await roleStore.CreateAsync(new ApplicationRole { Name = "admin", NormalizedName = "admin", Id = Guid.NewGuid().ToString() });
             }
 
             if (!_context.Users.Any(u => u.UserName == user.UserName))
@@ -38,7 +39,7 @@ namespace WadoRyu.Data
                 var password = new PasswordHasher<ApplicationUser>();
                 var hashed = password.HashPassword(user, "password");
                 user.PasswordHash = hashed;
-                var userStore = new UserStore<ApplicationUser>(_context);
+                var userStore = new UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext>(_context);
                 await userStore.CreateAsync(user);
                 await userStore.AddToRoleAsync(user, "admin");
             }
