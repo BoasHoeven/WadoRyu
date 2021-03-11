@@ -24,7 +24,7 @@ namespace WadoRyu.Data
                 Email = "Email@email.com",
                 EmailConfirmed = true,
                 LockoutEnabled = false,
-                SecurityStamp = Guid.NewGuid().ToString()
+                //SecurityStamp = Guid.NewGuid().ToString()
             };
 
             var roleStore = new RoleStore<ApplicationRole>(_context);
