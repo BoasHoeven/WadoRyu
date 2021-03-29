@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WadoRyu
+namespace JokesWebApp
 {
 	public class Program
 	{

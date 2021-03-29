@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace WadoRyu.Data.Migrations
+namespace JokesWebApp.Data.Migrations
 {
 	public partial class CreateIdentitySchema : Migration
 	{

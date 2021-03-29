@@ -1,12 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model IEnumerable<JokesWebApp.Models.NewsArticle>
+
+@{
+	ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <div class="koptekst">
-        <center>
-            <h1 id="koptitle">Wado Ryu Overijssel</h1>
-        </center>
-    </div>
+	<h1>Welkom!</h1>
+	...op de website van karatevereniging Wado Ryu Overijssel. Karatevereniging Wado Ryu is actief in meerdere plaatsen in de provincie Overijssel.
+
+	Onze vereniging is aangesloten bij de Nederlandse Culturele Sportbond (NCS) en is zowel rijkserkend als erkend door het NOC*NSF. De trainingen worden gegeven onder leiding van rijkserkend gediplomeerde instructeurs.
+
+	Wilt u op een verantwoorde, veilige en plezierige manier karate leren? Dan bent u bij ons aan het juiste adres!
 </div>
+
+<div id="newsarticles">
+	@foreach (var item in Model)
+	{
+		<div class="card" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+				<p class="card-text">@Html.DisplayFor(modelItem => item.Content)</p>
+				<a href="/NewsArticles/News/@Html.DisplayFor(modelItem => item.ID)" class="card-link"> Lees meer...</a>
+			</div>
+		</div>
+	}
+</div>
+
+

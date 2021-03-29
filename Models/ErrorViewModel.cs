@@ -1,6 +1,6 @@
 using System;
 
-namespace WadoRyu.Models
+namespace JokesWebApp.Models
 {
 	public class ErrorViewModel
 	{

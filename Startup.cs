@@ -1,3 +1,4 @@
+using JokesWebApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,15 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WadoRyu.Data;
-using WadoRyu.Models;
 
-namespace WadoRyu
+namespace JokesWebApp
 {
 	public class Startup
 	{
@@ -32,26 +30,19 @@ namespace WadoRyu
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
-			services.AddDatabaseDeveloperPageExceptionFilter();
-
-			services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddRoles<ApplicationRole>()
+			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
-
-			services.AddTransient<UserSeed>();
-
 			services.AddControllersWithViews();
+			services.AddRazorPages();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, UserSeed seeder)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			seeder.SeedAdminUser();
-
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
-				app.UseMigrationsEndPoint();
+				app.UseDatabaseErrorPage();
 			}
 			else
 			{

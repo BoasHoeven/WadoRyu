@@ -51,6 +51,25 @@ button.accept-policy {
   line-height: inherit;
 }
 
+/* News Article preview */
+#newsarticles {
+    display: flex; /* establish flex container */
+    flex-direction: row; /* default value; can be omitted */
+    flex-wrap: nowrap; /* default value; can be omitted */
+    justify-content: space-evenly; /* switched from default (flex-start, see below) space-between */
+    margin-top: 300px;
+}
+
+.card {
+    white-space: nowrap;
+}
+
+#newsarticles p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -58,36 +77,10 @@ html {
   min-height: 100%;
 }
 
-.koptekst {
-    background: url(Media/kop.png);
-    position: absolute;
-    width: 750px;
-    height: 100px;
-    top: 50%;
-    left: 50%;
-    margin-left: -375px;
-    margin-top: -600px;
-    z-index: 3;
-}
-
-h1 {
-    color: #ffffff;
-    text-shadow: #000000 0.1em 0.1em 0.2em;
-    font-size: 48px;
-    font-family: times, serif;
-    font-weight: bold;
-}
-
-#koptitle
-{
-    margin-top:20px;
-}
-
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
-
 .footer {
   position: absolute;
   bottom: 0;
