@@ -4,14 +4,16 @@ using JokesWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JokesWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210329134623_New")]
+    partial class New
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -261,10 +263,12 @@ namespace JokesWebApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VideoCategory")
+                    b.Property<int?>("VideoCategoryID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("VideoCategoryID");
 
                     b.ToTable("Video");
                 });
@@ -333,6 +337,13 @@ namespace JokesWebApp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WadoRyu.Models.Video", b =>
+                {
+                    b.HasOne("WadoRyu.Models.VideoCategory", "VideoCategory")
+                        .WithMany()
+                        .HasForeignKey("VideoCategoryID");
                 });
 #pragma warning restore 612, 618
         }

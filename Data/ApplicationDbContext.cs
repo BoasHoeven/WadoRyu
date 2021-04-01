@@ -14,5 +14,7 @@ namespace JokesWebApp.Data
 		public DbSet<JokesWebApp.Models.NewsArticle> NewsArticle { get; set; }
 
 		public DbSet<WadoRyu.Models.Video> Video { get; set; }
+
+		public DbSet<WadoRyu.Models.VideoCategory> VideoCategory { get; set; }
 	}
 }

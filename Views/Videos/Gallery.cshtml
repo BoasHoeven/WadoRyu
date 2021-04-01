@@ -10,8 +10,8 @@
 	@foreach (var item in Model)
 	{
 		<div class="col-lg-4" style="padding-bottom: 30px;">
-			<div style="text-align: center; border-top-right-radius: 25px; border-top-left-radius: 25px; border: 1px solid #dfe1e5;">
-				<p style="margin-top: 10px;">@Html.DisplayFor(modelItem => item.Name)</p>
+			<div style="text-align: center; border-top-right-radius: 25px; border-top-left-radius: 25px; border: 1px solid #dfe1e5; font-size: 15px;">
+				<p style="font-size: 18px; margin-top: 10px;">@Html.DisplayFor(modelItem => item.Name)</p>
 			</div>
 			<div class="embed-responsive embed-responsive-16by9">
 				<iframe class="embed-responsive-item" src="@Html.DisplayFor(modelItem => item.Url)" allowfullscreen></iframe>

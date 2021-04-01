@@ -4,14 +4,16 @@ using JokesWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JokesWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210329133913_Chks")]
+    partial class Chks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -261,7 +263,7 @@ namespace JokesWebApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VideoCategory")
+                    b.Property<int>("VideoCategoryID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -279,7 +281,12 @@ namespace JokesWebApp.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("VideoID")
+                        .HasColumnType("int");
+
                     b.HasKey("VideoCategoryID");
+
+                    b.HasIndex("VideoID");
 
                     b.ToTable("VideoCategory");
                 });
@@ -333,6 +340,13 @@ namespace JokesWebApp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WadoRyu.Models.VideoCategory", b =>
+                {
+                    b.HasOne("WadoRyu.Models.Video", null)
+                        .WithMany("VideoCategories")
+                        .HasForeignKey("VideoID");
                 });
 #pragma warning restore 612, 618
         }

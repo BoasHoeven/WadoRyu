@@ -4,14 +4,16 @@ using JokesWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JokesWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210329133054_Video")]
+    partial class Video
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -261,17 +263,19 @@ namespace JokesWebApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VideoCategory")
+                    b.Property<int>("VideoCategoryID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("VideoCategoryID");
 
                     b.ToTable("Video");
                 });
 
             modelBuilder.Entity("WadoRyu.Models.VideoCategory", b =>
                 {
-                    b.Property<int>("VideoCategoryID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -279,7 +283,7 @@ namespace JokesWebApp.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("VideoCategoryID");
+                    b.HasKey("ID");
 
                     b.ToTable("VideoCategory");
                 });
@@ -331,6 +335,15 @@ namespace JokesWebApp.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WadoRyu.Models.Video", b =>
+                {
+                    b.HasOne("WadoRyu.Models.VideoCategory", "VideoCategory")
+                        .WithMany()
+                        .HasForeignKey("VideoCategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

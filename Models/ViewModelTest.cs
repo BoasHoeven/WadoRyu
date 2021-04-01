@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace WadoRyu.Models
 {
-	public class Video
+	public class ViewModelTest
 	{
-		public int ID { get; set; }
 
 		[StringLength(20, ErrorMessage = "Video title cannot exceed 20 characters")]
 		public string Name { get; set; }
@@ -18,7 +19,9 @@ namespace WadoRyu.Models
 		[DisplayName("Date added")]
 		public DateTime DateAdded { get; set; }
 
-		[DisplayName("Video Category")]
-		public int VideoCategory { get; set; }
+		[Display(Name = "Select a video category")]
+		public string SelectedValue { get; set; }
+
+		public IEnumerable<SelectListItem> VideoCategories { get; set; }
 	}
 }

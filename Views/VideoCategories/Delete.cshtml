@@ -1,4 +1,4 @@
-﻿@model WadoRyu.Models.Video
+﻿@model WadoRyu.Models.VideoCategory
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Video</h4>
+    <h4>VideoCategory</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -17,22 +17,10 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Url)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Url)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateAdded)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateAdded)
-        </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="ID" />
+        <input type="hidden" asp-for="VideoCategoryID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
