@@ -19,6 +19,6 @@ namespace WadoRyu.Models
 		public DateTime DateAdded { get; set; }
 
 		[DisplayName("Video Category")]
-		public int VideoCategory { get; set; }
+		public string VideoCategory { get; set; }
 	}
 }

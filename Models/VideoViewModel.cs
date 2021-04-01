@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WadoRyu.Models
 {
-	public class ViewModelTest
+	public class VideoViewModel
 	{
 
 		[StringLength(20, ErrorMessage = "Video title cannot exceed 20 characters")]
@@ -19,8 +19,10 @@ namespace WadoRyu.Models
 		[DisplayName("Date added")]
 		public DateTime DateAdded { get; set; }
 
-		[Display(Name = "Select a video category")]
-		public string SelectedValue { get; set; }
+
+		[Display(Name = "Select the video categories")]
+		[Required(ErrorMessage = "One video category is required.")]
+		public IEnumerable<string> SelectedValues { get; set; }
 
 		public IEnumerable<SelectListItem> VideoCategories { get; set; }
 	}
